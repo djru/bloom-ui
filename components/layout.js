@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 export default function Layout({ children }) {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    fetch("https://bloom-health.herokuapp.com/whoami")
+    fetch("https://api.bloomhealth.com/whoami", {
+      credentials: "include",
+    })
       .then((r) => r.json())
       .then((r) => {
         console.log(r);
