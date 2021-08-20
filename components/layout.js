@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Layout({ children }) {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    fetch("https://api.bloomhealth.com/whoami", {
+    fetch("https://api.bloomhealth.app/whoami", {
       credentials: "include",
     })
       .then((r) => r.json())
@@ -35,7 +35,11 @@ export default function Layout({ children }) {
             <Link href="/login">
               <a>Log In</a>
             </Link>
-          ) : null}
+          ) : (
+            <Link href="/me">
+              <a>Hello {user.email}</a>
+            </Link>
+          )}
         </div>
       </nav>
 
