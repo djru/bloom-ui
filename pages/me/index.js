@@ -11,7 +11,9 @@ export default function Home() {
     <>
       <h2>Hello {user.email}</h2>
       {user.confirmed ? null : <h3>Your email is unconfirmed</h3>}
-      <button className="delete-my-data">Delete My Account and All Data</button>
+      <button className={styles.deleteMyData}>
+        Delete My Account and All Data
+      </button>
     </>
   );
 }
