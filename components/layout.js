@@ -20,7 +20,7 @@ export default function Layout({ children }) {
       });
   }, []);
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Bloom - BP Tracker</title>
         <meta name="description" content="Bloom blood pressure tracker" />
@@ -38,18 +38,20 @@ export default function Layout({ children }) {
             </Link>
           ) : (
             <Link href="/me">
-              <a>Hello {user.email}</a>
+              <a>Hello, {user.email}</a>
             </Link>
           )}
         </div>
       </nav>
-      <userContext.Provider value={{ user, setUser }}>
-        <main className={styles.main}>{children}</main>
-      </userContext.Provider>
+      <div className={styles.container}>
+        <userContext.Provider value={{ user, setUser }}>
+          <main className={styles.main}>{children}</main>
+        </userContext.Provider>
 
-      <footer className={styles.footer}>
-        © Dan Ruswick {new Date().getFullYear()}
-      </footer>
-    </div>
+        <footer className={styles.footer}>
+          © Dan Ruswick {new Date().getFullYear()}
+        </footer>
+      </div>
+    </>
   );
 }
