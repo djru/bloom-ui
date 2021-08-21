@@ -1,3 +1,10 @@
 .deleteMyData {
-  color: red;
+  border-radius: 10px;
+  background: red;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
 }
