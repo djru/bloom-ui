@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import { userContext } from "../context/context";
 import { useContext } from "react";
 
-export default function Home({ user }) {
+export default function Home() {
   const { user } = useContext(userContext);
   if (!user.email) {
     return <h1>Not Logged In</h1>;
