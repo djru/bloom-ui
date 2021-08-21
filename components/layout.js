@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import { userContext } from "../context/context";
 
 export default function Layout({ children }) {
   const [user, setUser] = useState(null);
@@ -42,8 +43,9 @@ export default function Layout({ children }) {
           )}
         </div>
       </nav>
-
-      <main className={styles.main}>{children}</main>
+      <userContext.Provider value={{ user, setUser }}>
+        <main className={styles.main}>{children}</main>
+      </userContext.Provider>
 
       <footer className={styles.footer}>
         © Dan Ruswick {new Date().getFullYear()}
