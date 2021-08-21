@@ -4,8 +4,14 @@ import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { userContext } from "../context/context";
 
+const Error = ({ children }) => {
+  return <div className={styles.error}>{children}</div>;
+};
+
 export default function Layout({ children }) {
   const [user, setUser] = useState(null);
+  const [err, setErr] = useState("");
+
   useEffect(() => {
     fetch("https://api.bloomhealth.app/whoami", {
       credentials: "include",
@@ -19,6 +25,7 @@ export default function Layout({ children }) {
         console.error(r);
       });
   }, []);
+
   return (
     <>
       <Head>
@@ -44,7 +51,8 @@ export default function Layout({ children }) {
         </div>
       </nav>
       <div className={styles.container}>
-        <userContext.Provider value={{ user, setUser }}>
+        <userContext.Provider value={{ user, setUser, setErr }}>
+          {err.length ? <Error>{err}</Error> : null}
           <main className={styles.main}>{children}</main>
         </userContext.Provider>
 

@@ -1,3 +1,15 @@
+.error {
+  margin-top: 3vh;
+  width: 95%;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  background: pink;
+  border: 1px solid #ff9191;
+  margin-bottom: 3vh;
+  text-align: center;
+}
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;

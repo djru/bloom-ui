@@ -1,3 +1,17 @@
 .form {
-  background: blue;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid gray;
+  background: #f9f9f9;
+  width: 90vw;
+  max-width: 500px;
+}
+
+.form > input {
+  font-size: 2em;
+  padding: 10px;
+  margin-bottom: 20px;
 }

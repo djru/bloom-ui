@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <h2>Hello {user.email}</h2>
       {user.confirmed ? null : <h3>Your email is unconfirmed</h3>}
-      <Link>
+      <Link href="#">
         <a>Log Out</a>
       </Link>
       <button className={styles.deleteMyData}>
