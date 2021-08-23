@@ -33,24 +33,24 @@ export default function Layout({ children }) {
         <meta name="description" content="Bloom blood pressure tracker" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav className={styles.nav}>
-        <h1>
-          <Link href="/">🌸 Bloom Health</Link>
-        </h1>
-
-        <div className={styles.links}>
-          {!user ? (
-            <Link href="/login">
-              <a>Log In</a>
-            </Link>
-          ) : (
-            <Link href="/me">
-              <a>Hello, {user.email}</a>
-            </Link>
-          )}
-        </div>
-      </nav>
       <div className={styles.container}>
+        <nav className={styles.nav}>
+          <h1>
+            <Link href="/">🌸 Bloom Health</Link>
+          </h1>
+
+          <div className={styles.links}>
+            {!user ? (
+              <Link href="/login">
+                <a>Log In</a>
+              </Link>
+            ) : (
+              <Link href="/me">
+                <a>Hello, {user.email}</a>
+              </Link>
+            )}
+          </div>
+        </nav>
         <userContext.Provider value={{ user, setUser, setErr }}>
           {err.length ? <Error>{err}</Error> : null}
           <main className={styles.main}>{children}</main>

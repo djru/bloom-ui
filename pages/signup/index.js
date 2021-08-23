@@ -5,6 +5,7 @@ import { userContext } from "../../context/context";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const { setErr } = useContext(userContext);
 
   const handleLogin = (e) => {
@@ -44,10 +45,24 @@ export default function Login() {
           }}
         ></input>
         <input
+          type="password"
+          placeholder="confirm password"
+          className={styles.inputField}
+          required={true}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+          }}
+        ></input>
+        <input
           className={styles.submit}
           onClick={handleLogin}
           type="submit"
-          value="Log In"
+          value="Sign Up"
+          disabled={
+            !email.length ||
+            !confirmPassword.length ||
+            confirmPassword !== password
+          }
         />
       </form>
     </div>

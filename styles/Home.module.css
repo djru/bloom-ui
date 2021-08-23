@@ -71,3 +71,36 @@
   align-items: center;
   margin-right: 2vw;
 }
+
+.bloom {
+  background: -webkit-linear-gradient(#ff9dfb, #d92bfb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bloomHead {
+  font-size: 4em;
+  text-align: center;
+  max-width: 900px;
+  margin-bottom: 2vh;
+}
+
+.bloomSub {
+  color: #a7a7a7;
+  font-size: 2em;
+  margin-top: 0;
+  font-weight: 200;
+}
+
+.signupLink {
+  border: 1px solid #ff9dfb;
+  padding: 2vh 8vw;
+  border-radius: 8px;
+  margin-top: 5vh;
+  font-weight: bold;
+}
+
+.signupLink:hover {
+  color: white;
+  background: linear-gradient(#ff9dfb, #ec81e9);
+}

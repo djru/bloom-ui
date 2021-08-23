@@ -4,14 +4,25 @@
   background: transparent;
   justify-content: space-between;
   padding: 20px;
-  border: 1px solid gray;
-  background: #f9f9f9;
+  /* border: 1px solid #ff9dfb; */
   width: 90vw;
   max-width: 500px;
+  border-radius: 8px;
 }
 
 .form > input {
   font-size: 2em;
   padding: 10px;
   margin-bottom: 20px;
+}
+
+.form > input[type="submit"] {
+  margin-bottom: 0;
+}
+
+.loginPosition {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
