@@ -19,7 +19,9 @@ export default function Layout({ children }) {
       .then((r) => r.json())
       .then((r) => {
         console.log(r);
-        setUser(r);
+        if (r.status !== "failed") {
+          setUser(r);
+        }
       })
       .catch((r) => {
         console.error(r);
