@@ -1,13 +1,12 @@
 .error {
-  margin-top: 3vh;
-  width: 95%;
+  width: 100%;
   padding: 15px;
   color: white;
   font-weight: bold;
   background: pink;
   border: 1px solid #ff9191;
-  margin-bottom: 3vh;
   text-align: center;
+  cursor: pointer;
 }
 
 .container {

@@ -1,11 +1,21 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { userContext } from "../context/context";
 
 const Error = ({ children }) => {
-  return <div className={styles.error}>{children}</div>;
+  const { setErr } = useContext(userContext);
+  return (
+    <div
+      className={styles.error}
+      onClick={() => {
+        setErr("");
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default function Layout({ children }) {
