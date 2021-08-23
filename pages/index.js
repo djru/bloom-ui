@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
+    <div className={styles.mainLayout}>
       <h1 className={styles.bloomHead}>
         <span className={styles.bloom}>Bloom</span> helps you manage your blood
         pressure.
@@ -14,6 +14,6 @@ export default function Home() {
       <Link href="/signup">
         <a className={styles.signupLink}>Sign Up</a>
       </Link>
-    </>
+    </div>
   );
 }

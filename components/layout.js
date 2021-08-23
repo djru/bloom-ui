@@ -56,11 +56,10 @@ export default function Layout({ children }) {
         <userContext.Provider value={{ user, setUser, setErr }}>
           {err.length ? <Error>{err}</Error> : null}
           <main className={styles.main}>{children}</main>
+          <footer className={styles.footer}>
+            © Dan Ruswick {new Date().getFullYear()}
+          </footer>
         </userContext.Provider>
-
-        <footer className={styles.footer}>
-          © Dan Ruswick {new Date().getFullYear()}
-        </footer>
       </div>
     </>
   );
