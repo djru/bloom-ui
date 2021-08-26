@@ -18,9 +18,24 @@ const Error = ({ children }) => {
   );
 };
 
+const Alert = ({ children }) => {
+  const { setAlert } = useContext(userContext);
+  return (
+    <div
+      className={styles.warn}
+      onClick={() => {
+        setAlert("");
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 export default function Layout({ children }) {
   const [user, setUser] = useState(null);
   const [err, setErr] = useState("");
+  const [alert, setAlert] = useState("");
 
   useEffect(() => {
     fetch("https://api.bloomhealth.app/whoami", {
@@ -36,6 +51,14 @@ export default function Layout({ children }) {
       .catch((r) => {
         console.error(r);
       });
+  }, []);
+
+  useEffect(() => {
+    const url = new URL(window.location);
+    const alertMsg = url.searchParams.get("msg");
+    if (alertMsg) {
+      setAlert(alertMsg);
+    }
   }, []);
 
   return (
@@ -65,6 +88,7 @@ export default function Layout({ children }) {
         </nav>
         <userContext.Provider value={{ user, setUser, setErr }}>
           {err.length ? <Error>{err}</Error> : null}
+          {alert.length ? <Error>{err}</Error> : null}
           <main className={styles.main}>{children}</main>
           <footer className={styles.footer}>
             © Dan Ruswick {new Date().getFullYear()}

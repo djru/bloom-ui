@@ -9,6 +9,17 @@
   cursor: pointer;
 }
 
+.error {
+  width: 100%;
+  padding: 15px;
+  color: black;
+  font-weight: bold;
+  background: lightyellow;
+  border: 1px solid #yellow;
+  text-align: center;
+  cursor: pointer;
+}
+
 .container {
   min-height: 100vh;
   display: flex;
