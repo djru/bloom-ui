@@ -14,6 +14,7 @@ export default function Login() {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
     })
       .then((r) => r.json())
       .then(console.log)
