@@ -7,12 +7,9 @@ import { useRouter } from "next/router";
 export default function Home() {
   const { user, setErr } = useContext(userContext);
   const router = useRouter();
-  useEffect(() => {
-    if (!user?.email) {
-      setErr("You are not logged in");
-      router.push("/");
-    }
-  }, [router, setErr, user]);
+  if (!user) {
+    return "Loading";
+  }
 
   return (
     <>
