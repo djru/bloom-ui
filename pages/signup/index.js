@@ -12,7 +12,7 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("https://api.bloomhealth.app/login", {
+    fetch("https://api.bloomhealth.app/signup", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },

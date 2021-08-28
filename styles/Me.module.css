@@ -7,3 +7,7 @@
   cursor: pointer;
   text-transform: uppercase;
 }
+
+.logout {
+  margin: 2vh auto;
+}

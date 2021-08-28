@@ -23,7 +23,7 @@ const Alert = ({ children }) => {
   const { setAlert } = useContext(userContext);
   return (
     <div
-      className={styles.warn}
+      className={styles.alert}
       onClick={() => {
         setAlert("");
       }}
@@ -106,7 +106,7 @@ export default function Layout({ children }) {
         </nav>
         <userContext.Provider value={{ user, setUser, setErr, setAlert }}>
           {err.length ? <Error>{err}</Error> : null}
-          {alert.length ? <Error>{alert}</Error> : null}
+          {alert.length ? <Alert>{alert}</Alert> : null}
           <main className={styles.main}>{children}</main>
           <footer className={styles.footer}>
             © Dan Ruswick {new Date().getFullYear()}
