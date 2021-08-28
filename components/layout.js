@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "../context/context";
+import router from "next/router";
 
 const Error = ({ children }) => {
   const { setErr } = useContext(userContext);
@@ -53,6 +54,7 @@ export default function Layout({ children }) {
       })
       .catch((r) => {
         console.error(r);
+        setUser(false);
       });
   }, []);
 
@@ -62,6 +64,7 @@ export default function Layout({ children }) {
     const alertMsg = url.searchParams.get("msg");
     if (alertMsg) {
       setAlert(alertMsg);
+      router.replace(url.pathname);
     }
   }, []);
 
