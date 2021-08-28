@@ -5,7 +5,6 @@ import Link from "next/link";
 import useLogin from "../../hooks/useLogin";
 
 export default function Home() {
-  const { setErr } = useContext(userContext);
   const user = useLogin();
 
   return user ? (
