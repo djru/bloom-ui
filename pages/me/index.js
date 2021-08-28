@@ -11,7 +11,14 @@ export default function Home() {
   return (
     <>
       <h2>Hello {user.email}</h2>
-      {user.confirmed ? null : <h3>Your email is unconfirmed</h3>}
+      {user.confirmed ? null : (
+        <div>
+          <h3>Your email is unconfirmed</h3>
+          <Link href="https://api.bloomhealth.app/resend">
+            <a>Resend My Link</a>
+          </Link>
+        </div>
+      )}
       <Link href="https://api.bloomhealth.app/logout" className={styles.logout}>
         <a>Log Out</a>
       </Link>
