@@ -2,7 +2,7 @@ import styles from "../../styles/Me.module.css";
 import Link from "next/link";
 import useLogin from "../../hooks/useLogin";
 
-export default function Home() {
+export default function Me() {
   const user = useLogin();
 
   if (!user) {
@@ -19,8 +19,8 @@ export default function Home() {
           </Link>
         </div>
       )}
-      <Link href="https://api.bloomhealth.app/logout" className={styles.logout}>
-        <a>Log Out</a>
+      <Link href="https://api.bloomhealth.app/logout">
+        <a className={styles.logout}>Log Out</a>
       </Link>
       <button className={styles.deleteMyData}>
         Delete My Account and All Data

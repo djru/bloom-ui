@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { userContext } from "../../context/context";
 import { useRouter } from "next/router";
 
-export default function Login() {
+export default function Recovery() {
   const [email, setEmail] = useState("");
   const { setErr, setAlert, setUser } = useContext(userContext);
   const router = useRouter();

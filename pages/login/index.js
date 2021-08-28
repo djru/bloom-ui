@@ -63,7 +63,7 @@ export default function Login() {
         />
       </form>
       <Link href="/recover">
-        <a>Forgot your password?</a>
+        <a className={styles.forgotLink}>Forgot your password?</a>
       </Link>
     </div>
   );
