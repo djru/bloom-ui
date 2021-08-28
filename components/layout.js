@@ -103,7 +103,7 @@ export default function Layout({ children }) {
         </nav>
         <userContext.Provider value={{ user, setUser, setErr, setAlert }}>
           {err.length ? <Error>{err}</Error> : null}
-          {alert.length ? <Error>{err}</Error> : null}
+          {alert.length ? <Error>{alert}</Error> : null}
           <main className={styles.main}>{children}</main>
           <footer className={styles.footer}>
             © Dan Ruswick {new Date().getFullYear()}
