@@ -9,7 +9,6 @@ export default function Home() {
   const router = useRouter();
   if (user?.email) {
     router.push("/me");
-    return;
   }
   return (
     <div className={styles.mainLayout}>
