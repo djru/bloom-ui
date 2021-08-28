@@ -2,19 +2,16 @@ import { userContext } from "../../context/context";
 import { useContext, useEffect } from "react";
 import styles from "../../styles/Me.module.css";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import useLogin from "../hooks/useLogin";
 
 export default function Home() {
-  const { user, setErr } = useContext(userContext);
-  const router = useRouter();
-  if (!user) {
-    return "Loading";
-  }
+  const { setErr } = useContext(userContext);
+  const user = useLogin();
 
-  return (
+  return user ? (
     <>
-      <h2>Hello {user?.email}</h2>
-      {user?.confirmed ? null : <h3>Your email is unconfirmed</h3>}
+      <h2>Hello {user.email}</h2>
+      {user.confirmed ? null : <h3>Your email is unconfirmed</h3>}
       <Link href="https://api.bloomhealth.app/logout">
         <a>Log Out</a>
       </Link>
@@ -22,6 +19,7 @@ export default function Home() {
         Delete My Account and All Data
       </button>
     </>
+  ) : (
+    <></>
   );
-  return <></>;
 }

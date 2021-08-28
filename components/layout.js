@@ -37,6 +37,7 @@ export default function Layout({ children }) {
   const [err, setErr] = useState("");
   const [alert, setAlert] = useState("");
 
+  // on load, fetch the current user and set it as state
   useEffect(() => {
     fetch("https://api.bloomhealth.app/whoami", {
       credentials: "include",
@@ -45,7 +46,9 @@ export default function Layout({ children }) {
       .then((r) => {
         console.log(r);
         if (r.succeeded) {
-          setUser(r);
+          setUser(r.data);
+        } else {
+          setUser(false);
         }
       })
       .catch((r) => {
@@ -53,6 +56,7 @@ export default function Layout({ children }) {
       });
   }, []);
 
+  // auto set the alert from the url
   useEffect(() => {
     const url = new URL(window.location);
     const alertMsg = url.searchParams.get("msg");
@@ -60,6 +64,17 @@ export default function Layout({ children }) {
       setAlert(alertMsg);
     }
   }, []);
+
+  // auto dismiss the errors and alerts after 6 seconds
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setErr("");
+      setAlert("");
+    }, 6000);
+    return () => {
+      clearTimeout(t);
+    };
+  }, [err, alert, setErr, setAlert]);
 
   return (
     <>
