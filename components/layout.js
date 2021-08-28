@@ -64,7 +64,10 @@ export default function Layout({ children }) {
     const alertMsg = url.searchParams.get("msg");
     if (alertMsg) {
       setAlert(alertMsg);
-      router.replace(url.pathname);
+      // we want to delete the message portion so that the message does not show up again on reload
+      // but we want to keep everything else
+      url.searchParams.delete("msg");
+      router.replace(`${url.pathname}?${url.searchParams.toString()}`);
     }
   }, []);
 

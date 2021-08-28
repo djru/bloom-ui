@@ -2,30 +2,25 @@ import styles from "../../styles/Login.module.css";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "../../context/context";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { setErr, setUser, setAlert } = useContext(userContext);
+  const { setErr, setAlert, setUser } = useContext(userContext);
   const router = useRouter();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("https://api.bloomhealth.app/login", {
-      method: "post",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" },
+    const url = new URL("https://api.bloomhealth.app/sendRecover");
+    url.searchParams.append("email", email);
+    fetch(url.toString(), {
       credentials: "include",
     })
       .then((r) => r.json())
       .then((r) => {
         console.log(r);
+        setAlert(r.message);
         if (r.succeeded) {
-          setUser(r.data);
-          router.push("/me");
-        } else {
-          setAlert(r.message);
+          router.push("/");
         }
       })
       .catch((err) => {
@@ -47,24 +42,13 @@ export default function Login() {
           }}
         ></input>
         <input
-          type="password"
-          placeholder="password"
-          className={styles.inputField}
-          required={true}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        ></input>
-        <input
           className={styles.submit}
           onClick={handleLogin}
           type="submit"
-          value="Log In"
+          value="Recover"
+          disabled={!email.length}
         />
       </form>
-      <Link href="/recover">
-        <a>Forgot your password?</a>
-      </Link>
     </div>
   );
 }
