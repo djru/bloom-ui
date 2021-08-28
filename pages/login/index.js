@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setErr } = useContext(userContext);
+  const { setErr, setUser, setAlert } = useContext(userContext);
   const router = useRouter();
 
   const handleLogin = (e) => {
@@ -20,7 +20,12 @@ export default function Login() {
       .then((r) => r.json())
       .then((r) => {
         console.log(r);
-        router.push("/me");
+        if (r.succeeded) {
+          setUser(r.data);
+          router.push("/me");
+        } else {
+          setAlert(r.message);
+        }
       })
       .catch((err) => {
         console.log(err);

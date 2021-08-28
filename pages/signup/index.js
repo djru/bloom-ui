@@ -7,20 +7,26 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { setErr } = useContext(userContext);
+  const { setErr, setAlert, setUser } = useContext(userContext);
   const router = useRouter();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("https://api.bloomhealth.app/singup", {
+    fetch("https://api.bloomhealth.app/login", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
       .then((r) => r.json())
-      .then(() => {
-        router.push("/me");
+      .then((r) => {
+        console.log(r);
+        if (r.succeeded) {
+          setUser(r.data);
+          router.push("/me");
+        } else {
+          setAlert(r.message);
+        }
       })
       .catch((err) => {
         console.log(err);
