@@ -1,23 +1,27 @@
 import styles from "../../styles/Login.module.css";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "../../context/context";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { setErr } = useContext(userContext);
+  const router = useRouter();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("https://api.bloomhealth.app/login", {
+    fetch("https://api.bloomhealth.app/singup", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
       .then((r) => r.json())
-      .then(console.log)
+      .then(() => {
+        router.push("/me");
+      })
       .catch((err) => {
         console.log(err);
         setErr(err.toString());

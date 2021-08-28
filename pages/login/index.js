@@ -1,11 +1,13 @@
 import styles from "../../styles/Login.module.css";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "../../context/context";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setErr } = useContext(userContext);
+  const router = useRouter();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,7 +18,10 @@ export default function Login() {
       credentials: "include",
     })
       .then((r) => r.json())
-      .then(console.log)
+      .then((r) => {
+        console.log(r);
+        router.push("/me");
+      })
       .catch((err) => {
         console.log(err);
         setErr(err.toString());

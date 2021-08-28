@@ -1,7 +1,16 @@
 import styles from "../styles/Home.module.css";
+import { useContext } from "react";
 import Link from "next/link";
+import { userContext } from "../context/context";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const { user } = useContext(userContext);
+  const router = useRouter();
+  if (user?.email) {
+    router.push("/me");
+    return;
+  }
   return (
     <div className={styles.mainLayout}>
       <h1 className={styles.bloomHead}>
