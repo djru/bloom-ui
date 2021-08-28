@@ -101,7 +101,7 @@ export default function Layout({ children }) {
             )}
           </div>
         </nav>
-        <userContext.Provider value={{ user, setUser, setErr }}>
+        <userContext.Provider value={{ user, setUser, setErr, setAlert }}>
           {err.length ? <Error>{err}</Error> : null}
           {alert.length ? <Error>{err}</Error> : null}
           <main className={styles.main}>{children}</main>

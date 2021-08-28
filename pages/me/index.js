@@ -2,7 +2,7 @@ import { userContext } from "../../context/context";
 import { useContext, useEffect } from "react";
 import styles from "../../styles/Me.module.css";
 import Link from "next/link";
-import useLogin from "../hooks/useLogin";
+import useLogin from "../../hooks/useLogin";
 
 export default function Home() {
   const { setErr } = useContext(userContext);
