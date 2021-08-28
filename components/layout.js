@@ -44,7 +44,7 @@ export default function Layout({ children }) {
       .then((r) => r.json())
       .then((r) => {
         console.log(r);
-        if (r.status !== "failed") {
+        if (r.succeeded) {
           setUser(r);
         }
       })
