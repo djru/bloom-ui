@@ -12,7 +12,7 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/resend" + "/login", {
+    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/login", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
