@@ -40,7 +40,7 @@ export default function Layout({ children }) {
 
   // on load, fetch the current user and set it as state
   useEffect(() => {
-    fetch("https://api.bloomhealth.app/whoami", {
+    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/whoami", {
       credentials: "include",
     })
       .then((r) => r.json())
@@ -53,7 +53,6 @@ export default function Layout({ children }) {
         }
       })
       .catch((r) => {
-        console.error(r);
         setUser(false);
       });
   }, []);

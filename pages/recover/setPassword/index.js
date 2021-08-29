@@ -13,7 +13,7 @@ export default function SetPassword() {
 
   const handleRecover = (e) => {
     e.preventDefault();
-    fetch("https://api.bloomhealth.app/recover", {
+    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/recover", {
       method: "post",
       body: JSON.stringify({ email, password, recovery_id: id }),
       headers: { "Content-Type": "application/json" },

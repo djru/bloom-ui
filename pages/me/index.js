@@ -14,12 +14,12 @@ export default function Me() {
       {user.confirmed ? null : (
         <div>
           <h3>Your email is unconfirmed</h3>
-          <Link href="https://api.bloomhealth.app/resend">
+          <Link href={process.env.NEXT_PUBLIC_BACKEND_URL + "/resend"}>
             <a>Resend My Link</a>
           </Link>
         </div>
       )}
-      <Link href="https://api.bloomhealth.app/logout">
+      <Link href={process.env.NEXT_PUBLIC_BACKEND_URL + "/logout"}>
         <a className={styles.logout}>Log Out</a>
       </Link>
       <button className={styles.deleteMyData}>

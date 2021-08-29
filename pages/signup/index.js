@@ -12,7 +12,7 @@ export default function Signup() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    fetch("https://api.bloomhealth.app/signup", {
+    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/signup", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },

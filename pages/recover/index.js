@@ -10,7 +10,7 @@ export default function Recovery() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const url = new URL("https://api.bloomhealth.app/sendRecover");
+    const url = new URL(process.env.NEXT_PUBLIC_BACKEND_URL + "/sendRecover");
     url.searchParams.append("email", email);
     fetch(url.toString(), {
       credentials: "include",
