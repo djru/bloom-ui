@@ -40,7 +40,7 @@ export default function Layout({ children }) {
 
   // on load, fetch the current user and set it as state
   useEffect(() => {
-    if (process.env.NEXT_PUBLIC_ENV == "dev") {
+    if (process.env.NEXT_PUBLIC_ENV === "dev") {
       setUser({
         confirmed: true,
         email: "djruswick@outlook.com",

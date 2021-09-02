@@ -24,7 +24,9 @@ export default function Me() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/readings")
+    fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/readings", {
+      credentials: "include",
+    })
       .then((r) => r.json())
       .then((r) => {
         if (r.succeeded) {
@@ -41,7 +43,7 @@ export default function Me() {
         console.log(err);
         setErr(err.toString());
       });
-  });
+  }, [setAlert, setErr]);
 
   if (!user) {
     return null;
