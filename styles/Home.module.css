@@ -131,3 +131,8 @@
   color: white;
   background: linear-gradient(#ff9dfb, #ec81e9);
 }
+
+.headerLink {
+  margin-left: 1vw;
+  font-weight: bold;
+}

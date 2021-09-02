@@ -1,6 +1,6 @@
-import styles from "../../styles/Me.module.css";
+import styles from "../styles/Me.module.css";
 import Link from "next/link";
-import useLogin from "../../hooks/useLogin";
+import useLogin from "../hooks/useLogin";
 
 export default function Me() {
   const user = useLogin();
@@ -21,6 +21,9 @@ export default function Me() {
       )}
       <Link href={process.env.NEXT_PUBLIC_BACKEND_URL + "/logout"}>
         <a className={styles.logout}>Log Out</a>
+      </Link>
+      <Link href={process.env.NEXT_PUBLIC_BACKEND_URL + "/readings.csv"}>
+        <a>Export my data</a>
       </Link>
       {/* <button className={styles.deleteMyData}>
         Delete My Account and All Data

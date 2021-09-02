@@ -1,7 +1,7 @@
-import styles from "../../../styles/Readings.module.css";
+import styles from "../../styles/Readings.module.css";
 import Link from "next/link";
-import useLogin from "../../../hooks/useLogin";
-import { userContext } from "../../../context/context";
+import useLogin from "../../hooks/useLogin";
+import { userContext } from "../../context/context";
 import { useState, useRef, useEffect, useContext } from "react";
 
 export default function NewReading() {
@@ -33,7 +33,6 @@ export default function NewReading() {
       .then((r) => {
         console.log(r);
         if (r.succeeded) {
-          setUser(r.data);
           router.push("/me");
         } else {
           setAlert(r.message);

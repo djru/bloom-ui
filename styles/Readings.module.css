@@ -40,3 +40,19 @@
   background: none;
   cursor: not-allowed;
 }
+
+.downloadCSV {
+  position: fixed;
+  bottom: 2vh;
+  left: 2vh;
+  border: 1px solid blue;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.noData {
+  text-align: center;
+  color: gray;
+  font-weight: 200;
+  margin-top: 20vh;
+}

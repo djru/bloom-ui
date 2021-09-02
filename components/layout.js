@@ -40,12 +40,19 @@ export default function Layout({ children }) {
 
   // on load, fetch the current user and set it as state
   useEffect(() => {
+    if (process.env.NEXT_PUBLIC_ENV == "dev") {
+      setUser({
+        confirmed: true,
+        email: "djruswick@outlook.com",
+        id: 3,
+      });
+      return;
+    }
     fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/whoami", {
       credentials: "include",
     })
       .then((r) => r.json())
       .then((r) => {
-        console.log(r);
         if (r.succeeded) {
           setUser(r.data);
         } else {
@@ -100,9 +107,17 @@ export default function Layout({ children }) {
                 <a>Log In</a>
               </Link>
             ) : (
-              <Link href="/me">
-                <a>Hello, {user.email}</a>
-              </Link>
+              <>
+                <Link href="/readings">
+                  <a className={styles.headerLink}>My Graph</a>
+                </Link>
+                <Link href="/readings/new">
+                  <a className={styles.headerLink}>Add BP</a>
+                </Link>
+                <Link href="/me">
+                  <a className={styles.headerLink}>My Account</a>
+                </Link>
+              </>
             )}
           </div>
         </nav>

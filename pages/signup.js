@@ -1,6 +1,6 @@
-import styles from "../../styles/Login.module.css";
+import styles from "../styles/Login.module.css";
 import { useContext, useEffect, useState } from "react";
-import { userContext } from "../../context/context";
+import { userContext } from "../context/context";
 import { useRouter } from "next/router";
 
 export default function Signup() {
@@ -20,7 +20,6 @@ export default function Signup() {
     })
       .then((r) => r.json())
       .then((r) => {
-        console.log(r);
         if (r.succeeded) {
           setUser(r.data);
           router.push("/me");
