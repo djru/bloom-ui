@@ -15,7 +15,9 @@ export default function NewReading() {
   const { setErr, setUser, setAlert } = useContext(userContext);
 
   useEffect(() => {
-    autoFocus.current.focus();
+    if (autoFocus.current) {
+      autoFocus.current.focus();
+    }
   }, []);
 
   const handleSubmit = (e) => {
