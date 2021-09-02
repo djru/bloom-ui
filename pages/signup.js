@@ -2,6 +2,7 @@ import styles from "../styles/Login.module.css";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "../context/context";
 import { useRouter } from "next/router";
+import { passwordIsGood } from "../helpers/password";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -45,18 +46,30 @@ export default function Signup() {
             setEmail(e.target.value);
           }}
         ></input>
+        {passwordIsGood(password) ? null : (
+          <label htmlFor="pw" className={styles.smallLabel}>
+            Must be 8 chars, have a capital, a number and a special char
+          </label>
+        )}
         <input
           type="password"
           placeholder="password"
           className={styles.inputField}
+          id="pw"
           required={true}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         ></input>
+        {password === confirmPassword && !!password ? null : (
+          <label htmlFor="pw-conf" className={styles.smallLabel}>
+            Passwords must match
+          </label>
+        )}
         <input
           type="password"
           placeholder="confirm password"
+          id="pw-conf"
           className={styles.inputField}
           required={true}
           onChange={(e) => {
@@ -71,7 +84,8 @@ export default function Signup() {
           disabled={
             !email.length ||
             !confirmPassword.length ||
-            confirmPassword !== password
+            confirmPassword !== password ||
+            !passwordIsGood(password)
           }
         />
       </form>

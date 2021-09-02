@@ -125,9 +125,9 @@ export default function Layout({ children }) {
           {err.length ? <Error>{err}</Error> : null}
           {alert.length ? <Alert>{alert}</Alert> : null}
           <main className={styles.main}>{children}</main>
-          <footer className={styles.footer}>
+          {/* <footer className={styles.footer}>
             © Dan Ruswick {new Date().getFullYear()}
-          </footer>
+          </footer> */}
         </userContext.Provider>
       </div>
     </>

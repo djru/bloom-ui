@@ -2,6 +2,7 @@ import styles from "../../../styles/Login.module.css";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "../../../context/context";
 import { useRouter } from "next/router";
+import { passwordIsGood } from "../../../helpers/password";
 
 export default function SetPassword() {
   const [email, setEmail] = useState("");
@@ -55,18 +56,30 @@ export default function SetPassword() {
             setEmail(e.target.value);
           }}
         ></input>
+        {passwordIsGood(password) ? null : (
+          <label htmlFor="pw" className={styles.smallLabel}>
+            Must be 8 chars, have a capital, a number and a special char
+          </label>
+        )}
         <input
           type="password"
           placeholder="new password"
+          id="pw"
           className={styles.inputField}
           required={true}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         ></input>
+        {password === confirmPassword && !!password ? null : (
+          <label htmlFor="pw-conf" className={styles.smallLabel}>
+            Passwords must match
+          </label>
+        )}
         <input
           type="password"
           placeholder="confirm password"
+          id="pw-conf"
           className={styles.inputField}
           required={true}
           onChange={(e) => {
@@ -89,7 +102,11 @@ export default function SetPassword() {
           type="submit"
           value="Recover"
           disabled={
-            !email.length || !password.length || password !== confirmPassword
+            !email.length ||
+            !password.length ||
+            password !== confirmPassword ||
+            !recovery_id ||
+            !passwordIsGood(password)
           }
         />
       </form>
