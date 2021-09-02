@@ -60,7 +60,7 @@ export default function NewReading() {
             className={styles.inputField}
             required={true}
             onChange={(e) => {
-              setTop(e.target.value);
+              setTop(parseInt(e.target.value));
             }}
           ></input>
           <input
@@ -69,7 +69,7 @@ export default function NewReading() {
             className={styles.inputField}
             required={true}
             onChange={(e) => {
-              setBottom(e.target.value);
+              setBottom(parseInt(e.target.value));
             }}
           ></input>
           <input
@@ -78,7 +78,7 @@ export default function NewReading() {
             className={styles.inputField}
             required={true}
             onChange={(e) => {
-              setPulse(e.target.value);
+              setPulse(parseInt(e.target.value));
             }}
           ></input>
           <input
