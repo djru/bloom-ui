@@ -10,10 +10,12 @@ export const useLogin = () => {
     // it does not like setting shared state during a render
     // it actually behaves normally, but gives a fat error
     // so this is a workaround
-    setTimeout(() => {
-      setAlert("Please log in");
-      router.replace("/");
-    });
+    if (process.env.NEXT_PUBLIC_ENV !== "dev") {
+      setTimeout(() => {
+        setAlert("Please log in");
+        router.replace("/");
+      });
+    }
   }
   return user;
 };

@@ -1,0 +1,42 @@
+.inputField {
+  display: block;
+  font-size: 3rem;
+  border: none;
+  text-align: center;
+  border-bottom: 1px solid gainsboro;
+  padding: 2vh 0;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 3vh;
+  padding: 3vh 0;
+  font-size: 3em;
+  background: none;
+  color: #ff9dfb;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.submit:hover {
+  color: white;
+  background: #ff9dfb;
+}
+
+.loginPosition {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.head {
+  text-align: center;
+}
+
+.submit:disabled {
+  color: lightgray;
+  background: none;
+  cursor: not-allowed;
+}
