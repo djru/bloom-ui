@@ -98,14 +98,23 @@ export default function Layout({ children }) {
       <div className={styles.container}>
         <nav className={styles.nav}>
           <h1>
-            <Link href="/">🌸 Bloom Health</Link>
+            <Link href="/">
+              <a>
+                🌸 Bloom Health<sup>β</sup>
+              </a>
+            </Link>
           </h1>
 
           <div className={styles.links}>
             {!user ? (
-              <Link href="/login">
-                <a>Log In</a>
-              </Link>
+              <>
+                <Link href="/about">
+                  <a>About</a>
+                </Link>
+                <Link href="/me">
+                  <a className={styles.headerLink}>My Account</a>
+                </Link>
+              </>
             ) : (
               <>
                 <Link href="/readings">
