@@ -108,11 +108,11 @@ export default function Layout({ children }) {
           <div className={styles.links}>
             {!user ? (
               <>
+                <Link href="/about">
+                  <a style={{ marginLeft: "2vw" }}>About</a>
+                </Link>
                 <Link href="/login">
                   <a>Log In</a>
-                </Link>
-                <Link href="/about">
-                  <a>About</a>
                 </Link>
               </>
             ) : (
