@@ -1,0 +1,8 @@
+.aboutBlurb {
+  width: 90vw;
+  max-width: 400px;
+}
+
+.aboutBlurb a {
+  color: blue;
+}
