@@ -109,7 +109,7 @@ export default function Layout({ children }) {
             {!user ? (
               <>
                 <Link href="/about">
-                  <a style={{ marginLeft: "2vw" }}>About</a>
+                  <a style={{ marginRight: "2vw" }}>About</a>
                 </Link>
                 <Link href="/login">
                   <a>Log In</a>
